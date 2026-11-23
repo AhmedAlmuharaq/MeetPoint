@@ -2,7 +2,7 @@ FROM python:3.13-slim
 
 ENV PYTHONDONTWRITEBYTECODE=1 \
     PYTHONUNBUFFERED=1 \
-    DB_PATH=/app/data/meetings.sqlite3
+    DB_PATH=/var/lib/meetpoint/meetings.sqlite3
 
 WORKDIR /app
 

@@ -1,30 +1,20 @@
-# MeetPoint Android development client — 0.4.1
+# MeetPoint for Android
 
-This native Java/WebView shell uses the existing MeetPoint/PointCommun server. The 0.4.1 fix enables web media playback for later invitation sounds (the page still requires the user's sound opt-in) and implements a same-origin image document picker for PNG/JPEG/WebP. It also explicitly colors the server URL text for readable input. No backend, database or web UI files are part of this update.
+The Android client is a Java WebView shell for the MeetPoint web app. Version 0.4.2 requires Android 8.0 (API 26) or newer. Accounts, meetings and routes are provided by the server URL configured in the app.
 
-The new application ID is `fr.meetpoint.app.debug`. The earlier installed development client was signed with another unavailable development key, so this build installs alongside it rather than replacing it. Enter the same server URL and log in with your existing account. Accounts, meetings and photos stay on the same server; no database migration or new account is needed. The web session/server URL must be entered again because Android app storage is separate.
+## Run the demo
 
-The debug client accepts HTTP for a same-network demonstration and HTTPS for a reachable server. It has no SSL bypass, JavaScript bridge or background push implementation. Foreground in-app popup sounds are supported; app-closed/lock-screen delivery is not provided. Real GPS generally requires a secure origin and permissions.
+Download [MeetPoint-Android-0.4.2-debug.apk](../MeetPoint-Android-0.4.2-debug.apk), install it and use the current HTTPS MeetPoint server address. Foreground notifications, profile image selection and geolocation use the corresponding web features and Android permissions.
 
-## Build
+## Build from source
 
-Android Studio/Gradle: SDK35, AGP8.7.3, Gradle8.9, Java17. `./gradlew :app:assembleDebug`. The retained `debug-signing/meetpoint-debug.keystore` is only a DEVELOPMENT test key with standard known password `android`, alias `meetpointdebug`. It is not suitable for production releases. Preserve it for updates of this development app. Gradle's debug signing config uses this key.
-
-Manual verified build without Gradle:
+Use JDK 17, Android SDK 35, and the included Gradle wrapper.
 
 ```bash
-python3 android/tools/build_manual.py --sdk /path/to/sdk-extract --out MeetPoint-Android-fix.apk
+cd android
+./gradlew :app:assembleDebug
 ```
 
-The SDK directory must contain `android-35/android.jar` from Google's official `platform-35_r02.zip` and `android-15/` from `build-tools_r35_linux.zip`. Java17, Python3 and keytool are required. Java compilation uses the compiler module directly, so a separate javac launcher is not required.
+On Windows use `.\gradlew.bat :app:assembleDebug`. The resulting APK is in `app/build/outputs/apk/debug/`. Gradle uses the machine’s local Android debug signing key. If Android rejects a locally rebuilt APK as an update to an earlier demo APK, use a matching signing key or uninstall the earlier client before installing the locally signed copy. Uninstalling the client clears its local session; server data remains on the server.
 
-## Validation
-
-Java source compiled, D8 generated classes.dex, aapt2 linked localized resources/manifest, zipalign aligned the APK, and apksigner verified v2/v3 signatures. aapt2 verified application ID, versionCode4, versionName0.4.1, minSdk26 and targetSdk35. No physical-device runtime test was available.
-
-APK SHA-256: `b335e6d4c72ee7f86c24663e641359e40f40fd13b8d14be6a4ece225017c9a11`
-
-
-## Address field layout update — 0.4.2
-
-Replaced the fixed 52-physical-pixel address field height with wrap-content, a 48dp minimum, dp-scaled padding and centered 16sp text. This avoids clipping text on high-density devices. Rebuilt with versionCode 5 and the same development signing certificate as 0.4.1, allowing installation as an update. Compilation, resource linking, D8, alignment and v2/v3 signatures passed. Physical-device rendering remains to be tested.
+The optional [manual build script](tools/build_manual.py) creates a development key locally if one is absent. See [build verification](BUILD_VERIFICATION.json) for validation details from the archive. The APK has not been tested on a physical device during this update.

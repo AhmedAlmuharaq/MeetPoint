@@ -7,3 +7,8 @@ __pycache__/
 android/.gradle/
 android/local.properties
 android/**/build/
+*.py[cod]
+.env.*
+android/debug-signing/
+*.keystore
+*.jks

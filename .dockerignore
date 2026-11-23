@@ -6,9 +6,13 @@ tests
 android
 scripts
 docs
-*.sqlite3
+*.sqlite*
 *.db
 .git
 .gitignore
 README.md
 VALIDATION.md
+
+*.apk
+.env
+.env.*

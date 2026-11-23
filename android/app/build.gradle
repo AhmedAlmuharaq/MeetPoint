@@ -10,17 +10,8 @@ android {
         versionName '0.4.2'
     }
     buildFeatures { buildConfig true }
-    // Development-only key retained for subsequent test-app updates.
-    signingConfigs {
-        meetPointDevelopment {
-            storeFile rootProject.file('debug-signing/meetpoint-debug.keystore')
-            storePassword 'android'
-            keyAlias 'meetpointdebug'
-            keyPassword 'android'
-        }
-    }
     buildTypes {
-        debug { applicationIdSuffix '.debug'; signingConfig signingConfigs.meetPointDevelopment }
+        debug { applicationIdSuffix '.debug' }
         release { minifyEnabled false }
     }
     compileOptions {

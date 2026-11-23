@@ -1,0 +1,4 @@
+user_id,venue_id,reachable,arrival,duration_minutes,distance_m,departure,walking_refinement_status
+participant-1,bu-montbeliard-bulle-2a,True,2026-11-25T11:42:28+01:00,39.47,19563,2026-11-25T11:03:00+01:00,
+participant-2,bu-montbeliard-bulle-2a,True,2026-11-25T11:42:28+01:00,17.2,2014,2026-11-25T11:25:16+01:00,
+participant-3,bu-montbeliard-bulle-2a,True,2026-11-25T11:42:28+01:00,0.82,60,2026-11-25T11:41:39+01:00,

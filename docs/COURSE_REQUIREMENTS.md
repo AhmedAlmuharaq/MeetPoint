@@ -89,10 +89,10 @@ The 8/14/18/20 figures in Part I describe modelling and functional assessment pr
 
 | Evidence | What is visible | What still needs inspection |
 |---|---|---|
-| Ahmed's itinerary | 08:00 departure; about 3.07 minutes walking; bus B at 09:37; 94-minute displayed wait; arrival 09:48 | Why the search selected that departure, service and initial waiting period |
-| Prof Canalda's itinerary | 08:00 departure; 25.3 minutes walking; train C3 at 09:36; 71-minute displayed wait; arrival 09:51 | Whether 08:00 is a forced shared start, a user input or a routing-query default |
+| Participant A’s itinerary | 08:00 departure; about 3.07 minutes walking; bus B at 09:37; 94-minute displayed wait; arrival 09:48 | Why the search selected that departure, service and initial waiting period |
+| Participant B’s itinerary | 08:00 departure; 25.3 minutes walking; train C3 at 09:36; 71-minute displayed wait; arrival 09:51 | Whether 08:00 is a forced shared start, a user input or a routing-query default |
 | Shared destination | Both routes end at La Tasse a The - Hotel Bristol | Which other candidates were evaluated and why this one won |
-| Geometry | Ahmed's last walking segment lacks geometry; the train corridor is not certified as the service-specific path | Whether better verified geometry is available for the chosen routes |
+| Geometry | Participant A’s last walking segment lacks geometry; the train corridor is not certified as the service-specific path | Whether better verified geometry is available for the chosen routes |
 | Calculation speed | The user reports that the places calculation is slow | Actual duration, API-call count, cache use and the location of the bottleneck |
 
 These screenshots show excessive initial waiting in this example. They do not prove that the source code always forces simultaneous departure or calculates every possible place. The revised implementation must expose enough calculation evidence to diagnose both.
@@ -237,8 +237,8 @@ Using only the printed first-walk durations and service departures, an illustrat
 
 | Participant | Service in screenshot | Access walk | Illustrative origin departure | Effect |
 |---|---|---:|---:|---|
-| Ahmed | Bus B, 09:37 from JEAN MOULIN | 3.07 min | Around 09:28, conservatively rounded earlier | Reach the stop around 09:31, leaving about six minutes before boarding |
-| Prof Canalda | Train C3, 09:36 from Belfort-Ville | 25.3 min | Around 09:05, conservatively rounded earlier | Reach the station around 09:30, leaving about six minutes before boarding |
+| Participant A | Bus B, 09:37 from JEAN MOULIN | 3.07 min | Around 09:28, conservatively rounded earlier | Reach the stop around 09:31, leaving about six minutes before boarding |
+| Participant B | Train C3, 09:36 from Belfort-Ville | 25.3 min | Around 09:05, conservatively rounded earlier | Reach the station around 09:30, leaving about six minutes before boarding |
 
 These are illustrations, not newly verified travel instructions. The screenshots do not establish the service date, complete boarding rules, precise arrival seconds or venue availability. The revised application must recalculate the selected date and margins. If the same services remain feasible, the displayed destination arrivals can remain approximately 09:48 and 09:51 despite the later origin departures.
 
@@ -524,7 +524,7 @@ Page references above use the supplied PDF/slide pagination; file prefixes are R
 | S4 | `04-MSC-DynamicTransportationExactSolving-PhCanalda-03112026-EnglishVersion-part4.pdf` | pp. 2, 6-8, 16-18, 61, 63: scope, algorithms, static/dynamic work, OD example and schedule |
 | S4 duplicate | `03-MSC-DynamicTransportationExactSolving-PhCanalda-03112026-EnglishVersion-part4-1-.pdf` | Duplicate Part IV; not an additional specification |
 | M | `image(20261104-145103).png` | Submission contents, visible deadlines and bonus statements |
-| A1/A2 | `image(20261110-102740).png` and `image(20261110-102746).png` | Current Ahmed and Prof Canalda itineraries |
+| A1/A2 | `image(20261110-102740).png` and `image(20261110-102746).png` | Earlier sample itineraries |
 | Prior reference | Earlier version of `README_MINI_PROJECT.md`, prepared 5 November 2026 | Consolidated lecture-transcript notes on static preparation, approximately 30 locations, dynamic subsets and presentation preparation |
 
 The research annexes describe the course's Louage/carpooling examples. Their full research models are not automatically additional requirements for the chosen rendezvous application. The latest two itinerary screenshots establish observed output, not an audit of the underlying code.
